@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        https://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/aop
+        https://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/mvc
+        https://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+
+
+
+    <context:component-scan base-package="com">
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+    </context:component-scan>
+
+    <mvc:resources mapping="/js/**" location="/js/"></mvc:resources>
+    <!--<mvc:resources mapping="/admin/**" location="/admin/"></mvc:resources>
+    <mvc:resources mapping="/images/**" location="/images/"></mvc:resources>-->
+    <mvc:annotation-driven></mvc:annotation-driven>    <!--注释-->
+
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="suffix" value=".jsp"></property>
+    </bean>
+    
+   <!-- <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/user/**"/>
+            <mvc:exclude-mapping path="/user/testEx"/>
+            <bean class="inter.Interceptor"></bean>
+        </mvc:interceptor>
+    </mvc:interceptors>-->
+
+
+</beans>

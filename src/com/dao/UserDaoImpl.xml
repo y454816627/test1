@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.UserDaoImpl">
+    <!--登录-->
+    <select id="queryUser" resultType="com.po.User">
+        select * from t_user where account=#{arg0} and password=#{arg1}
+    </select>
+    <!--添加帖子-->
+    <insert id="addTitle" parameterType="Object">
+        insert into t_title(title) values (#{arg0})
+    </insert>
+    <!--查看所有帖子-->
+    <select id="queryTitle" resultType="com.po.Title">
+        select * from t_title
+    </select>
+    <!--查询帖子回复-->
+    <select id="queryReply" resultType="com.po.Reply">
+        select * from t_reply where titleId=#{x}
+    </select>
+    <!--按id查询帖子-->
+    <select id="selTitleById" resultType="com.po.Title">
+        select * from t_title where id=#{x}
+    </select>
+    <!--帖子回复-->
+    <insert id="addReply" parameterType="Object">
+        insert into t_reply(msg,time,titleId,account) values (#{arg0},#{arg1},#{arg2},#{arg3})
+    </insert>
+
+
+
+
+
+
+
+
+
+
+</mapper>
